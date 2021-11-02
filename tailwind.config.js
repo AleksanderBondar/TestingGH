@@ -2,11 +2,12 @@ module.exports = {
     purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
     theme: {
         extend: {
-            backgroundImage: {
+            
+            backgroundImage: theme => ({
                 git: "url('/images/teamMembersAvatars/git_icon.svg')",
-            },
+            }),
             backgroundSize: {
-                'body': '91%',
+                body: '91%',
             },
             colors: {
                 primaryFontColor: '#78a0fa',
@@ -62,7 +63,6 @@ module.exports = {
         backgroundImage: ['hover', 'focus'],
         backgroundSize: ['hover', 'focus'],
         borderWidth: ['hover', 'focus'],
-
     },
     plugins: [],
-}
+};
