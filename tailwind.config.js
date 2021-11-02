@@ -2,9 +2,8 @@ module.exports = {
     purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
     theme: {
         extend: {
-            
             backgroundImage: theme => ({
-                git: "url('/images/teamMembersAvatars/git_icon.svg')",
+                git: 'url("public/images/teamMembersAvatars/git_icon.svg")',
             }),
             backgroundSize: {
                 body: '91%',
