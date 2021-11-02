@@ -64,25 +64,26 @@ const blogspage = ({ content }: InferGetStaticPropsType<typeof getStaticProps>) 
     });
 
     return (
-        <Layout pageTitle="Blogs Page">
-            <Header isHomepage={false} />
-            <SectionWrapper>
-                <Titles>
-                    <h4>AKTUALNOŚCI</h4>
-                    <h1>Zapoznaj się z najnowszymi wiadomościami</h1>
-                    <h3>
-                        Nasz JamstackPB nieustannie się rozwija. Poniżej prezentujemy najważniejsze aktualności
-                        dotyczące naszego koła.
-                    </h3>
-                </Titles>
-                <GridContainer>
-                    {sortedContent.map((card, index) => {
-                        return <PostCard key={index} newest={index === 0} post={card} />;
-                    })}
-                </GridContainer>
-            </SectionWrapper>
-            <CopyRights />
-        </Layout>
+            <Layout pageTitle="Blogs Page">
+                <Header isHomepage={false} />
+                <SectionWrapper>
+                    <Titles>
+                        <h4>AKTUALNOŚCI</h4>
+                        <h1>Zapoznaj się z najnowszymi wiadomościami</h1>
+                        <h3>
+                            Nasz JamstackPB nieustannie się rozwija. Poniżej prezentujemy najważniejsze aktualności
+                            dotyczące naszego koła.
+                        </h3>
+                    </Titles>
+                    <GridContainer>
+                        {sortedContent.map((card, index) => {
+                            return <PostCard key={index} newest={index === 0} post={card} />;
+                        })}
+                    </GridContainer>
+                </SectionWrapper>
+                <CopyRights />
+            </Layout>
+
     );
 };
 export default blogspage;
