@@ -8,7 +8,6 @@ const Svg = styled.svg`
     cursor: pointer;
     margin-right: 4px;
     transition: 0.5s;
-    position: fixed;
     top: 0;
     z-index: 50;
 
