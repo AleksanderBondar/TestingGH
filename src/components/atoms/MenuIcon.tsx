@@ -1,3 +1,4 @@
+import { addImagePrefix } from '@/src/utils/prefix';
 import styled from '@emotion/styled';
 import React from 'react';
 import { useState } from 'react';
@@ -57,14 +58,14 @@ const Svg = styled.svg`
 type Props = { className?: string };
 const divStyles = {
     div: 'bg-blue-darkfont flex flex-col items-center justify-center fixed w-full h-full z-30 md:w-60',
-    transition: ' w-full h-20 relative',
+    transition: 'w-full h-20',
 };
 
 const DropMenu: React.FC<Props> = (props) => <div className={props.className}>{props.children}</div>;
 const DivMenu: React.FC<Props> = (props) => <div className={props.className}>{props.children}</div>;
-const Link: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({children, href}) => (
+const Link: React.FC<{href: string}> = ({children, href}) => (
     <a
-        href={href}
+        href={addImagePrefix(href)}
         className="text-center block font-medium -mt-12 p-5 w-full h-full leading-10 hover:no-underline hover:bg-gray-300"
         
     >
