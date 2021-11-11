@@ -1,36 +1,30 @@
-import { addImagePrefix } from '@/src/utils/prefix';
 import styled from '@emotion/styled';
-import React from 'react';
-import { useState } from 'react';
-
-
-
 const Svg = styled.svg`
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    margin-right: 4px;
-    transition: 0.5s;
-    top: 0;
-    z-index: 50;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-
-    path:nth-of-type(1) {
+    &.active {
+        transform: rotate(90deg);
+    }
+    & path {
+        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    & path:nth-of-type(1) {
         transform-origin: 36% 40%;
     }
-    path:nth-of-type(2) {
+    & path:nth-of-type(2) {
         stroke-dasharray: 29 299;
     }
-    path:nth-of-type(3) {
+    & path:nth-of-type(3) {
         transform-origin: 35% 63%;
     }
-    path:nth-of-type(4) {
+    & path:nth-of-type(4) {
         stroke-dasharray: 29 299;
     }
-    path:nth-of-type(5) {
+    & path:nth-of-type(5) {
         transform-origin: 61% 52%;
     }
-    path:nth-of-type(6) {
+    & path:nth-of-type(6) {
         transform-origin: 62% 52%;
     }
     &.active path:nth-of-type(1) {
@@ -54,104 +48,38 @@ const Svg = styled.svg`
         transform: translateX(9px) translateY(1px) rotate(45deg);
     }
 `;
+interface IconProps {
+    clicked: boolean;
+    click: () => void;
+}
 
-type Props = { className?: string };
-const divStyles = {
-    div: 'bg-blue-darkfont flex flex-col items-center justify-center fixed w-full h-full z-30 md:w-60',
-    transition: 'w-full h-20',
-};
-
-const DropMenu: React.FC<Props> = (props) => <div className={props.className}>{props.children}</div>;
-const DivMenu: React.FC<Props> = (props) => <div className={props.className}>{props.children}</div>;
-const Link: React.FC<{href: string}> = ({children, href}) => (
-    <a
-        href={addImagePrefix(href)}
-        className="text-center block font-medium -mt-12 p-5 w-full h-full leading-10 hover:no-underline hover:bg-gray-300"
-        
-    >
-        {children}
-    </a>
-);
-
-export const MenuIcon: React.FC<{ isHomepage?: boolean }> = ({ isHomepage = false }) => {
-    const [clicked, setClicked] = useState(false);
-    const ToggleMenu = () => setClicked(!clicked);
+export const MenuIcon: React.FC<IconProps> = ({ clicked, click }) => {
     return (
-        <div className={'h-20'}>
-            <Svg
-                onClick={ToggleMenu}
-                className={clicked ? 'active' : ''}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 200"
-            >
-                <g strokeWidth="6.5" strokeLinecap="round">
-                    <path d="M72 82.286h28.75" fillRule="evenodd" stroke="#fff" />
-                    <path
-                        d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
-                        fill="none"
-                        stroke="#fff"
-                    />
-                    <path d="M72 125.143h28.75" fillRule="evenodd" stroke="#fff" />
-                    <path
-                        d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
-                        fill="none"
-                        stroke="#fff"
-                    />
-                    <path d="M100.75 82.286h28.75" fillRule="evenodd" stroke="#fff" />
-                    <path d="M100.75 125.143h28.75" fillRule="evenodd" stroke="#fff" />
-                </g>
-            </Svg>
-            <DropMenu
-                className={`${divStyles.div} ${
-                    clicked ? 'transform duration-500 translate-x-0' : ' transform ease-in -translate-x-full'
-                }`}
-            >
-                <DivMenu
-                    className={`${divStyles.transition} ${
-                        clicked
-                            ? 'transform ease-out duration-200 delay-0 translate-x-0'
-                            : 'transform ease-out -translate-x-full'
-                    }`}
-                >
-                    <Link href="/">Strona główna</Link>
-                </DivMenu>
-                <DivMenu
-                    className={`${divStyles.transition} ${
-                        clicked
-                            ? 'transform ease-out duration-200 delay-150 translate-x-0'
-                            : 'transform ease-out -translate-x-full'
-                    }`}
-                >
-                    <Link href="/ProjectsPage/">Projekty</Link>
-                </DivMenu>
-                <DivMenu
-                    className={`${divStyles.transition} ${
-                        clicked
-                            ? 'transform ease-out duration-200 delay-300 translate-x-0'
-                            : 'transform ease-out -translate-x-full'
-                    }`}
-                >
-                    <Link href="/aboutUs/">O nas</Link>
-                </DivMenu>
-                <DivMenu
-                    className={`${divStyles.transition} ${
-                        clicked
-                            ? 'transform ease-out duration-200 delay-450 translate-x-0'
-                            : 'transform ease-out -translate-x-full'
-                    }`}
-                >
-                    <Link href="/teamMembers/">Członkowie </Link>
-                </DivMenu>
-                <DivMenu
-                    className={`${divStyles.transition} ${
-                        clicked
-                            ? 'transform ease-out duration-200 delay-600 translate-x-0'
-                            : 'transform ease-out -translate-x-full'
-                    }`}
-                >
-                    <Link href="/blogsPage/">Blog</Link>
-                </DivMenu>
-            </DropMenu>
-        </div>
+        <Svg
+            onClick={click}
+            className={`relative cursor-pointer w-16 ml-4 h-16 z-50 
+                ${clicked ? 'active' : 'scale-125'}
+
+            `}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+        >
+            <g strokeWidth="6.5" strokeLinecap="round">
+                <path d="M72 82.286h28.75" fillRule="evenodd" stroke="#fff" />
+                <path
+                    d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+                    fill="none"
+                    stroke="#fff"
+                />
+                <path d="M72 125.143h28.75" fillRule="evenodd" stroke="#fff" />
+                <path
+                    d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+                    fill="none"
+                    stroke="#fff"
+                />
+                <path d="M100.75 82.286h28.75" fillRule="evenodd" stroke="#fff" />
+                <path d="M100.75 125.143h28.75" fillRule="evenodd" stroke="#fff" />
+            </g>
+        </Svg>
     );
 };

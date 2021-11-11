@@ -5,7 +5,6 @@ import DOMPurify from 'isomorphic-dompurify';
 import marked from 'marked';
 import Link from 'next/link';
 import { Layout } from '@/src/layouts';
-import { Header } from '@/src/components';
 import { CopyRights } from '../../components/molecules/CopyRights';
 import { addImagePrefix } from '../../utils';
 import { InferGetStaticPropsType, GetStaticProps } from 'next';
@@ -17,7 +16,6 @@ const Post = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <Layout pageTitle={postTitle}>
-            <Header isHomepage={false} />
             <div className="flex flex-row px-48 w-full h-360px " style={{ marginTop: '80px' }}>
                 <div className="absolute top-160px -left-56 transform -skew-x-30 translate-x-96 bg-white w-1/2 h-360px z-20" />
                 <div className="static h-full w-4/6 pl-6 block z-30 bg-white">
@@ -46,7 +44,7 @@ const Post = ({
                     </div>
                     <div className="flex mt-7">
                         <div
-                            style={{ backgroundImage: 'url(' + avatar + ')' }}
+                            style={{ backgroundImage: 'url(' + addImagePrefix(avatar) + ')' }}
                             className="bg-cover h-50px w-50px z-30"
                         ></div>
                         <div className="inline-block h-50px ml-6">
