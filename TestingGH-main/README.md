@@ -1,7 +1,7 @@
 Jest to testowe repozytorium koła naukowego JAMSTACK PB
 
 # Jak zacząć
-tete
+teteerereer
 1. Klonujemy repo
 ```sh
 git clone https://github.com/jamstackpb/main
