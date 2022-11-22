@@ -13,7 +13,7 @@ npm i
 3. Uruchamiamy projekt
 ```sh
 npm run dev
-```
+```asdfasdf
 4. Wchodzimy w przeglądarce na `http://localhost:3000`
 ## Jak robić issuesy
 
