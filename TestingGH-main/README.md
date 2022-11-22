@@ -9,7 +9,7 @@ git clone https://github.com/jamstackpb/main
 2. Instalujemy zależności
 ```sh
 npm i
-```
+```qwerqwer
 3. Uruchamiamy projekt
 ```sh
 npm run dev
