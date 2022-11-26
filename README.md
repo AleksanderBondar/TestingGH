@@ -2,7 +2,7 @@ Jest to testowe repozytorium koła naukowego JAMSTACK PB
 
 # Jak zacząć
 
-1. Klonerererujemy repo
+1. Klonujemy repo
 ```sh
 git clone https://github.com/jamstackpb/main
 ```
