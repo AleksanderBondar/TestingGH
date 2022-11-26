@@ -20,7 +20,7 @@ npm run dev
 ```
 git checkout -b issue-NUMER_ISSUE
 ```
-
+sdsd
 Robimy zmiany
 
 ```
